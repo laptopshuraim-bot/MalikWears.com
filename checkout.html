@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Malik Wears</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <div class="logo-box">
+
+                <div class="mw-logo">MW</div>
+
+                <div>
+
+                    <h1>MALIK WEARS</h1>
+
+                    <span>Premium Pakistani Fashion</span>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html#products">Collection</a></li>
+
+            <li><a href="#">New Arrivals</a></li>
+
+            <li><a href="#">Specials</a></li>
+
+            <li><a href="cart.html">Cart 🛒</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+<section class="checkout">
+
+    <h1>Checkout</h1>
+
+    <form id="checkoutForm" action="https://formsubmit.co/hassanshuraim15@gmail.com" method="POST">
+
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="city" placeholder="City" required>
+
+    <textarea name="address" placeholder="Complete Address" required></textarea>
+
+    <button type="submit">Place Order</button>
+
+</form>
+
+</section>
+
+<script>
+document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let order = {
+        name: this.name.value,
+        phone: this.phone.value,
+        email: this.email.value,
+        city: this.city.value,
+        address: this.address.value,
+        cart: JSON.stringify(cart),
+        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    };
+
+    // Send to Google Sheets
+    fetch("https://script.google.com/macros/s/AKfycbzJ6HDLDb3guSgaSAMuhB4ojQHrMDom1_0WKtkHysMY-L0DyV9awRV8eg1V96HfQBEGUw/exec", {
+        method: "POST",
+        body: JSON.stringify(order)
+    });
+
+    // WhatsApp message
+ let message = `🛒 New Order
+
+Name: ${order.name}
+Phone: ${order.phone}
+Email: ${order.email}
+City: ${order.city}
+Address: ${order.address}
+
+🧾 Order Details:
+${cart.map(item =>
+    `${item.name}
+Size: ${item.size || "N/A"}
+Color: ${item.color || "N/A"}
+Qty: ${item.quantity}
+Price: Rs.${item.price * item.quantity}
+`
+).join("\n")}
+
+💰 Total: Rs.${order.total};
+
+Cart: ${order.cart}`;
+
+    let whatsappURL = "https://wa.me/923163753123?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+
+    // Clear cart once
+    localStorage.removeItem("cart");
+
+    alert("Order placed successfully!");
+    window.location.href = "index.html";
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
