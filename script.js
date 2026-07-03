@@ -33,25 +33,7 @@ buttons.forEach((button, index) => {
 
 });
 
-// ==========================
-// HEADER SHADOW ON SCROLL
-// ==========================
 
-window.addEventListener("scroll", () => {
-
-    const header = document.querySelector("header");
-
-    if (window.scrollY > 50) {
-
-        header.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
-
-    } else {
-
-        header.style.boxShadow = "none";
-
-    }
-
-});
 
 // ==========================
 // SIMPLE FADE-IN ANIMATION
@@ -252,4 +234,25 @@ window.addEventListener("scroll", function () {
     } else {
         header.classList.remove("scrolled");
     }
+});
+const menuToggle = document.getElementById("menuToggle");
+const navbar = document.getElementById("navbar");
+
+if(menuToggle && navbar){
+
+menuToggle.addEventListener("click",()=>{
+
+navbar.classList.toggle("active");
+
+});
+
+}
+document.querySelectorAll("#navbar a").forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+navbar.classList.remove("active");
+
+});
+
 });
