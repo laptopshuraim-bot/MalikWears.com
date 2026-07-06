@@ -1150,3 +1150,84 @@ nav ul li{
     color:#111;
 
 }
+/* ===========================
+   PRODUCT PAGE MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+    .product-page{
+        flex-direction: column;
+        width: 95%;
+        margin: 120px auto 40px;
+        gap: 30px;
+    }
+
+    .product-image,
+    .product-info{
+        width:100%;
+    }
+
+    .product-info h1{
+        font-size:30px;
+    }
+
+    .product-info h2{
+        font-size:24px;
+    }
+
+    .product-info select{
+        width:100%;
+    }
+
+    .color-container{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .product-info button{
+        width:100%;
+        margin:10px 0;
+    }
+
+    .quantity-box{
+        justify-content:center;
+    }
+
+}
+/* ===========================
+   CART MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+#cartItems > div{
+    flex-direction:column !important;
+    text-align:center;
+}
+
+#cartItems img{
+    width:180px !important;
+}
+
+}
+@media(max-width:768px){
+
+.logo-box h1{
+    font-size:22px;
+}
+
+.logo-box p,
+.logo-box span{
+    font-size:10px;
+}
+
+.mw-circle,
+.mw-logo{
+    width:48px;
+    height:48px;
+    font-size:20px;
+}
+
+}
