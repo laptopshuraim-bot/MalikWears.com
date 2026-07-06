@@ -33,21 +33,19 @@ body{
         HEADER
 =========================== */
 .menu-toggle{
-display:none;
-font-size:32px;
-cursor:pointer;
-color:#000;
-
+    display:none;
+    font-size:32px;
+    cursor:pointer;
+    color:#d4af37;
 }
 
 @media(max-width:768px){
-
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-color: #000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#111;
 }
 
 .menu-toggle{
@@ -55,13 +53,13 @@ display:block;
 }
 
 nav{
-position:absolute;
-top:100%;
-left:0;
-width:100%;
-background:#fff;
-display:none;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#111;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
 }
 
 nav.active{
@@ -79,13 +77,15 @@ nav ul li{
 text-align:center;
 }
 nav ul li a{
-    color:#fff;
+    color:#d4af37;   /* Gold */
     display:block;
     padding:12px 0;
     font-weight:600;
+    transition:.3s;
 }
+
 nav ul li a:hover{
-      color:#d4af37;
+    color:#111;
 }
 }
 header {
